@@ -1,0 +1,85 @@
+/* Design tokens inspired by the Screen Share reference: soft glass, blue accent and light/dark themes. */
+@property --bg { syntax: "<color>"; inherits: true; initial-value: #e8ebf3; }
+@property --surface { syntax: "<color>"; inherits: true; initial-value: #ffffff; }
+@property --ink { syntax: "<color>"; inherits: true; initial-value: #131a33; }
+@property --muted { syntax: "<color>"; inherits: true; initial-value: #5b6482; }
+@property --line { syntax: "<color>"; inherits: true; initial-value: #d3d8e6; }
+@property --accent { syntax: "<color>"; inherits: true; initial-value: #2f4bff; }
+@property --accent-ink { syntax: "<color>"; inherits: true; initial-value: #ffffff; }
+@property --glow1 { syntax: "<color>"; inherits: true; initial-value: rgba(47,75,255,.20); }
+@property --glow2 { syntax: "<color>"; inherits: true; initial-value: rgba(200,134,27,.38); }
+@property --glow3 { syntax: "<color>"; inherits: true; initial-value: rgba(200,134,27,.26); }
+@property --glass { syntax: "<color>"; inherits: true; initial-value: rgba(255,255,255,.52); }
+@property --glass-line { syntax: "<color>"; inherits: true; initial-value: rgba(255,255,255,.75); }
+@property --glass-soft { syntax: "<color>"; inherits: true; initial-value: rgba(255,255,255,.45); }
+@property --dot { syntax: "<color>"; inherits: true; initial-value: rgba(19,26,51,.16); }
+
+:root {
+  color-scheme: light;
+  --bg: #e8ebf3;
+  --surface: #ffffff;
+  --ink: #131a33;
+  --muted: #5b6482;
+  --line: #d3d8e6;
+  --accent: #2f4bff;
+  --accent-ink: #ffffff;
+  --ok: #0e8f5a;
+  --weak: #dc4545;
+  --medium: #c8861b;
+  --strong: #0e8f5a;
+  --glow1: rgba(47,75,255,.20);
+  --glow2: rgba(200,134,27,.38);
+  --glow3: rgba(200,134,27,.26);
+  --glass: rgba(255,255,255,.52);
+  --glass-line: rgba(255,255,255,.75);
+  --glass-soft: rgba(255,255,255,.45);
+  --dot: rgba(19,26,51,.16);
+  --text: var(--ink);
+  --text-muted: var(--muted);
+  --surface-strong: var(--glass-soft);
+  --surface-sidebar: rgba(255,255,255,.25);
+  --border: var(--glass-line);
+  --field-bg: rgba(255,255,255,.72);
+  --field-text: var(--ink);
+  --accent-hover: #243fe5;
+  --radius-lg: 28px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+  --shadow: 0 1px 2px rgba(19,26,51,.06), 0 12px 32px -12px rgba(19,26,51,.18);
+  --transition: .35s ease;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0e1222;
+  --surface: #171c33;
+  --ink: #e9ecfa;
+  --muted: #98a1c4;
+  --line: #2a3152;
+  --accent: #7c8cff;
+  --accent-ink: #0e1222;
+  --ok: #3ddc97;
+  --weak: #ff7373;
+  --medium: #e6b94f;
+  --strong: #3ddc97;
+  --glow1: rgba(88,110,255,.28);
+  --glow2: rgba(214,150,36,.34);
+  --glow3: rgba(214,150,36,.24);
+  --glass: rgba(34,40,74,.45);
+  --glass-line: rgba(255,255,255,.14);
+  --glass-soft: rgba(255,255,255,.07);
+  --dot: rgba(190,200,255,.16);
+  --text: var(--ink);
+  --text-muted: var(--muted);
+  --surface-strong: var(--glass-soft);
+  --surface-sidebar: rgba(10,14,30,.28);
+  --border: var(--glass-line);
+  --field-bg: rgba(10,14,30,.58);
+  --field-text: var(--ink);
+  --accent-hover: #9aa6ff;
+}
+:root.ready {
+  transition: --bg .55s ease, --surface .55s ease, --ink .55s ease, --muted .55s ease,
+    --line .55s ease, --accent .55s ease, --accent-ink .55s ease, --glow1 .55s ease,
+    --glow2 .55s ease, --glow3 .55s ease, --glass .55s ease, --glass-line .55s ease,
+    --glass-soft .55s ease, --dot .55s ease;
+}

@@ -1,0 +1,40 @@
+/* Global visual styling only. */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { color-scheme: light; }
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 28px 20px;
+  font-family: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.5;
+  overflow-x: hidden;
+  transition: background .55s ease, color .55s ease;
+}
+body::before, body::after {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+}
+body::before {
+  background:
+    radial-gradient(900px 520px at 8% -8%, var(--glow1), transparent 65%),
+    radial-gradient(620px 460px at 88% 22%, var(--glow3), transparent 70%),
+    radial-gradient(820px 560px at 96% 108%, var(--glow2), transparent 65%),
+    radial-gradient(560px 420px at 6% 78%, var(--glow1), transparent 70%);
+}
+body::after {
+  background-image: radial-gradient(circle, var(--dot) 1.2px, transparent 1.6px);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 40%, #000 25%, transparent 100%);
+  mask-image: radial-gradient(ellipse 75% 70% at 50% 40%, #000 25%, transparent 100%);
+}
+h1 { font-size: 1.75rem; font-weight: 750; letter-spacing: -.025em; margin-bottom: 6px; }
+button { font: inherit; color: inherit; cursor: pointer; border: 0; }
+button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+[hidden] { display: none !important; }
+.background-glow { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

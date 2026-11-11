@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A simple, private password generator and strength checker that runs entirely in your browser." />
+  <title>Password Tools</title>
+
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <div class="background-glow" aria-hidden="true"></div>
+
+  <button class="lang-btn" id="langBtn" type="button" aria-label="Switch language">PT</button>
+
+  <main class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-icon" aria-hidden="true">🔒</span>
+        <span class="brand-name">Password Tools</span>
+      </div>
+
+      <nav class="nav" role="tablist" aria-label="Tools">
+        <button class="nav-btn active" role="tab" id="tab-generator" aria-selected="true" aria-controls="generator" data-tab="generator" type="button">
+          <span aria-hidden="true">🔐</span>
+          <span data-i18n="nav.generator">Generator</span>
+        </button>
+        <button class="nav-btn" role="tab" id="tab-checker" aria-selected="false" aria-controls="checker" data-tab="checker" type="button">
+          <span aria-hidden="true">🛡️</span>
+          <span data-i18n="nav.checker">Checker</span>
+        </button>
+      </nav>
+
+      <button class="theme-btn" id="themeBtn" type="button">
+        <span id="themeIcon" aria-hidden="true">🌙</span>
+        <span id="themeLabel" data-i18n="theme.dark">Dark Mode</span>
+      </button>
+    </aside>
+
+    <section class="content">
+      <!-- Generator -->
+      <div id="generator" class="tab active" role="tabpanel" aria-labelledby="tab-generator">
+        <h1 data-i18n="gen.title">Password Generator</h1>
+        <p class="subtitle" data-i18n="gen.subtitle">Create strong, random passwords in one click.</p>
+
+        <div class="output-row">
+          <div class="output" id="result" aria-live="polite" data-i18n="gen.placeholder">Click "Generate"</div>
+          <button class="icon-btn" id="copyBtn" type="button" aria-label="Copy password" title="Copy">📋</button>
+        </div>
+
+        <div class="meter" id="genMeter">
+          <div class="meter-track"><div class="meter-bar" id="genBar"></div></div>
+          <div class="meter-info">
+            <span id="genLevel"></span>
+            <span id="genScore"></span>
+          </div>
+        </div>
+
+        <div class="length-row">
+          <label for="length" data-i18n="gen.length">Length</label>
+          <output id="lengthValue" for="length">16</output>
+        </div>
+        <input type="range" id="length" min="4" max="50" value="16" />
+
+        <div class="options">
+          <label class="check"><input type="checkbox" id="optLower" checked /><span data-i18n="gen.lowercase">Lowercase letters</span></label>
+          <label class="check"><input type="checkbox" id="optUpper" checked /><span data-i18n="gen.uppercase">Uppercase letters</span></label>
+          <label class="check"><input type="checkbox" id="optNumbers" checked /><span data-i18n="gen.numbers">Numbers</span></label>
+          <label class="check"><input type="checkbox" id="optSymbols" /><span data-i18n="gen.symbols">Symbols</span></label>
+        </div>
+
+        <button class="btn btn-primary" id="generateBtn" type="button" data-i18n="gen.generate">Generate Password</button>
+      </div>
+
+      <!-- Checker -->
+      <div id="checker" class="tab" role="tabpanel" aria-labelledby="tab-checker" hidden>
+        <h1 data-i18n="chk.title">Strength Checker</h1>
+        <p class="subtitle" data-i18n="chk.subtitle">Find out how strong your password is. Nothing leaves your browser.</p>
+
+        <div class="input-row">
+          <input type="password" id="checkInput" autocomplete="off" spellcheck="false" data-i18n-placeholder="chk.placeholder" placeholder="Type or paste a password" />
+          <button class="icon-btn" id="toggleVisibility" type="button" aria-label="Show password" title="Show">👁️</button>
+        </div>
+
+        <div class="meter" id="checkMeter">
+          <div class="meter-track"><div class="meter-bar" id="checkBar"></div></div>
+          <div class="meter-info">
+            <span id="checkLevel"></span>
+            <span id="checkScore"></span>
+          </div>
+        </div>
+
+        <ul class="rules" id="rules">
+          <li data-rule="length8"><span class="dot"></span><span data-i18n="rule.length8">At least 8 characters</span></li>
+          <li data-rule="length12"><span class="dot"></span><span data-i18n="rule.length12">At least 12 characters</span></li>
+          <li data-rule="upper"><span class="dot"></span><span data-i18n="rule.upper">Contains an uppercase letter</span></li>
+          <li data-rule="number"><span class="dot"></span><span data-i18n="rule.number">Contains a number</span></li>
+          <li data-rule="symbol"><span class="dot"></span><span data-i18n="rule.symbol">Contains a symbol</span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Load order matters: no build step or bundler required -->
+  <script src="js/i18n.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/strength.js"></script>
+  <script src="js/generator.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
