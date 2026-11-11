@@ -18,7 +18,7 @@ A simple, private password generator and strength checker that runs entirely in 
 No installation needed. Clone the repository and open `index.html` in any modern browser:
 
 ```bash
-git clone https://github.com/<your-username>/password-tools.git
+git clone https://github.com/guimartinssss/Password-Generator
 cd password-tools
 # then just open index.html in your browser
 ```
